@@ -1,15 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/sc hemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:MusicPlayerApp.ViewModel" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
              x:Class="MusicPlayerApp.View.LandingPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <!-- Соединили View с ViewModel -->
+    <ContentPage.BindingContext>
+        <vm:LandingVM/>
+    </ContentPage.BindingContext>
+    <!-- Background -->
+    <yummy:PancakeView HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientAngle="180"
+                       BackgroundColor="#F0FCFF">
+        <!--<yummy:PancakeView.BackgroundGradientStops>
+            <yummy:GradientStopCollection>
+                <yummy:GradientStop Color="#E7EDF8" Offset="0"/>
+                <yummy:GradientStop Color="#E3E7EE" Offset="1"/>
+            </yummy:GradientStopCollection>
+        </yummy:PancakeView.BackgroundGradientStops>-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <!-- Header -->
+            <StackLayout Grid.Row="0">
+                <!-- Header with bottom left angle radius -->
+                <yummy:PancakeView CornerRadius="0,0,50,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <!-- Image fill all two rows as background -->
+                        <Image Aspect="AspectFill" Grid.RowSpan="2" Source="{Binding RecentMusic.CoverImage}"/>
+                        <Grid Grid.Row="1" HeightRequest="70" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="30">
+                            <BoxView BackgroundColor="Black" Opacity="0.7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            <StackLayout Margin="40,0" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding RecentMusic.Title}" TextColor="White" FontSize="18"/>
+                                <Label Text="{Binding RecentMusic.Band}" TextColor="White" FontSize="16" Opacity="0.8"/>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </yummy:PancakeView>
+                <!-- Floating Play button -->
+                <yummy:PancakeView HasShadow="True" WidthRequest="50" HeightRequest="50" CornerRadius="50" Margin="0,-35,40,0"
+                                HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="#1F4068">
+                    <Image Source="play.png" WidthRequest="11" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </yummy:PancakeView>
+            </StackLayout>
+            <!-- List of musics -->
+            <CollectionView Grid.Row="1" Margin="20,0" ItemsSource="{Binding MusicList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            SelectionMode="Single" SelectedItem="{Binding SelectedMusic}" SelectionChangedCommand="{Binding SelectionCommand}">
+                <!-- Title of list of musics -->
+                <CollectionView.Header>
+                    <Label Text="You Playlist" TextColor="Black" Opacity="0.5" Margin="15,0"/>
+                </CollectionView.Header>
+                <!-- orientation -->
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="1"/>
+                </CollectionView.ItemsLayout>
+                <!-- Items of musics -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Info about music -->
+                            <StackLayout Grid.Column="0">
+                                <Label Text="{Binding Title}" TextColor="Black" FontSize="18"/>
+                                <Label Text="{Binding Brand}" TextColor="Black" FontSize="16"/>
+                                <Label Text="{Binding Duration}" TextColor="Black" Opacity="0.5" FontSize="12"/>
+                            </StackLayout>
+                            <!-- Play music button -->
+                            <yummy:PancakeView Grid.Column="1" HasShadow="True" WidthRequest="32" HeightRequest="32" CornerRadius="30"
+                                               HorizontalOptions="End" VerticalOptions="Center" BackgroundColor="#1F4068">
+                                <Image Source="play.png" WidthRequest="11" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </yummy:PancakeView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </yummy:PancakeView>
 </ContentPage>
