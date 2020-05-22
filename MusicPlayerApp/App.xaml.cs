@@ -1,7 +1,5 @@
 ﻿using MusicPlayerApp.View;
-using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace MusicPlayerApp
 {
@@ -10,7 +8,6 @@ namespace MusicPlayerApp
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new LandingPage());
         }
 

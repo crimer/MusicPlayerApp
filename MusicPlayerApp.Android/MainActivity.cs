@@ -3,6 +3,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using FFImageLoading.Forms.Platform;
+using FFImageLoading.Svg.Forms;
 using MediaManager;
 
 namespace MusicPlayerApp.Droid
@@ -20,6 +22,9 @@ namespace MusicPlayerApp.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CrossMediaManager.Current.Init(this);
+            //CachedImageRenderer.InitImageViewHandler();
+            //var ignore = typeof(SvgCachedImage);
+            CachedImageRenderer.Init(true);
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
