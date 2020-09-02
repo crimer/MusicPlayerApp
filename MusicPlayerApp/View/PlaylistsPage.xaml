@@ -55,10 +55,8 @@
                                 <Label Text="{Binding Duration}" TextColor="Black" Opacity="0.5" FontSize="12"/>
                             </StackLayout>
                             <!-- Play music button -->
-                            <yummy:PancakeView Grid.Column="1" HasShadow="True" WidthRequest="32" HeightRequest="32" CornerRadius="30"
-                                               HorizontalOptions="End" VerticalOptions="Center" BackgroundColor="#1F4068">
-                                <Image Source="play.png" WidthRequest="11" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            </yummy:PancakeView>
+                            <Button ImageSource="ic_play_arrow.png" Grid.Column="1" WidthRequest="32" HeightRequest="32" CornerRadius="30"
+                                               HorizontalOptions="End" VerticalOptions="Center" BackgroundColor="#1F4068" Command="{Binding ChangeCommand}" CommandParameter="P"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

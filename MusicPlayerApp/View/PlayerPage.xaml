@@ -8,39 +8,20 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="MusicPlayerApp.View.PlayerPage">
     <yummy:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F0FCFF">
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="1.2"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <!-- Header -->
-            <Grid Margin="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <!-- button back -->
-                <yummy:PancakeView Grid.Column="0" HasShadow="True" WidthRequest="32" HeightRequest="32" 
-                                   CornerRadius="30" HorizontalOptions="Start" BackgroundColor="#1F4068">
-                    <yummy:PancakeView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
-                    </yummy:PancakeView.GestureRecognizers>
-                    <Image Source="backArrow.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                </yummy:PancakeView>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+
+            <FlexLayout JustifyContent="SpaceBetween" Grid.Row="0">
+                <Button ImageSource="ic_arrow_back.png" Grid.Column="0" WidthRequest="32" HeightRequest="32" 
+                                   CornerRadius="30" HorizontalOptions="Start" BackgroundColor="#1F4068" Command="{Binding BackCommand}"/>
+
                 <Label Grid.Column="1" Text="You playlist" TextColor="Black" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <!-- Button info -->
-                <yummy:PancakeView Grid.Column="2" HasShadow="True" WidthRequest="32" HeightRequest="32" 
-                                   CornerRadius="30" HorizontalOptions="Start" BackgroundColor="#1F4068">
-                    <yummy:PancakeView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding InfoCommand}"/>
-                    </yummy:PancakeView.GestureRecognizers>
-                    <Image Source="info.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                </yummy:PancakeView>
-            </Grid>
+
+                <Button ImageSource="info.png" Grid.Column="2" WidthRequest="32" HeightRequest="32" 
+                                   CornerRadius="30" HorizontalOptions="Start" BackgroundColor="#1F4068" Command="{Binding InfoCommand}"/>
+            </FlexLayout>
+
             <!-- Image preview and music title -->
-            <StackLayout Grid.Row="1" Spacing="25" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Grid.Row="1" Spacing="25" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
                 <yummy:PancakeView HasShadow="True" BackgroundColor="White" HeightRequest="177" WidthRequest="177" CornerRadius="85"
                                     HorizontalOptions="Center" VerticalOptions="Center">
                     <yummy:PancakeView HasShadow="True" BackgroundColor="White" HeightRequest="163" WidthRequest="163" CornerRadius="75"
@@ -54,8 +35,9 @@
                     <Label Text="{Binding SelectedMusic.Band}" FontSize="18" HorizontalOptions="Center"/>
                 </StackLayout>
             </StackLayout>
+
             <!-- Duration slider and controls -->
-            <StackLayout Spacing="100" Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Grid.Row="2" Spacing="100" Margin="0,50,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <!-- Duration slider -->
                 <StackLayout WidthRequest="295" HorizontalOptions="Center">
                     <Slider MinimumTrackColor="#1F4068" MaximumTrackColor="#D4D9DA" ThumbColor="#1F4068" Value="{Binding Position.TotalSeconds}"
@@ -65,38 +47,23 @@
                         <Label Text="{Binding Duration, StringFormat='{0:mm\\:ss}'}" FontSize="12" HorizontalOptions="End" VerticalOptions="Center"/>
                     </StackLayout>
                 </StackLayout>
-                
-                <!-- Controls -->
-                <StackLayout Orientation="Horizontal" Spacing="50" HorizontalOptions="Center">
-                    <!-- previous music button -->
-                    <yummy:PancakeView HasShadow="True" BackgroundColor="#1F4068" HeightRequest="42" WidthRequest="42" CornerRadius="50"
-                                    HorizontalOptions="Center" VerticalOptions="Center">
-                        <yummy:PancakeView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ChangeCommand}" CommandParameter="P"/>
-                        </yummy:PancakeView.GestureRecognizers>
-                        <Image Source="prevMusic.png" WidthRequest="20" HeightRequest="12"
-                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </yummy:PancakeView>
-                    <!-- stop/play music button -->
-                    <yummy:PancakeView HasShadow="True" BackgroundColor="#1F4068" HeightRequest="56" WidthRequest="56" CornerRadius="70"
-                                    HorizontalOptions="Center" VerticalOptions="Center">
-                        <yummy:PancakeView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding PlayCommand}"/>
-                        </yummy:PancakeView.GestureRecognizers>
-                        <Image Source="{Binding PlayIcon}" WidthRequest="20" HeightRequest="30"
-                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </yummy:PancakeView>
-                    <!-- next music button -->
-                    <yummy:PancakeView HasShadow="True" BackgroundColor="#1F4068" HeightRequest="42" WidthRequest="42" CornerRadius="50"
-                                    HorizontalOptions="Center" VerticalOptions="Center">
-                        <yummy:PancakeView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ChangeCommand}" CommandParameter="N"/>
-                        </yummy:PancakeView.GestureRecognizers>
-                        <Image Source="nextMusic.png" WidthRequest="20" HeightRequest="12"
-                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </yummy:PancakeView>
-                </StackLayout>
+
             </StackLayout>
-        </Grid>
+            <!-- Controls -->
+            <StackLayout Grid.Row="3" Orientation="Horizontal" Spacing="50" HorizontalOptions="Center">
+
+                <Button ImageSource="ic_skip_previous.png" BackgroundColor="#1F4068" HeightRequest="42" WidthRequest="42" CornerRadius="50"
+                                HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding ChangeCommand}" CommandParameter="P"/>
+
+
+                <Button ImageSource="{Binding PlayIcon}" BackgroundColor="#1F4068" HeightRequest="56" WidthRequest="56" CornerRadius="70"
+                                HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding PlayCommand}" CommandParameter="P"/>
+
+
+                <Button ImageSource="ic_skip_next.png" BackgroundColor="#1F4068" HeightRequest="42" WidthRequest="42" CornerRadius="50"
+                                HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding ChangeCommand}" CommandParameter="N"/>
+
+            </StackLayout>
+        </StackLayout>
     </yummy:PancakeView>
 </ContentPage>

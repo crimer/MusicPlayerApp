@@ -1,4 +1,5 @@
-﻿using MusicPlayerApp.View;
+﻿using MediaManager;
+using MusicPlayerApp.View;
 using Xamarin.Forms;
 
 namespace MusicPlayerApp
@@ -8,6 +9,7 @@ namespace MusicPlayerApp
         public App()
         {
             InitializeComponent();
+            //CrossMediaManager.Current.Init();
             MainPage = new NavigationPage(new LandingPage());
         }
 

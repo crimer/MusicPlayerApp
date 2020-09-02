@@ -11,52 +11,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\back.svg" />
-    <None Remove="Images\backArrow.png" />
-    <None Remove="Images\folders.svg" />
-    <None Remove="Images\headphones.png" />
-    <None Remove="Images\headphones.svg" />
-    <None Remove="Images\info.png" />
-    <None Remove="Images\info.svg" />
-    <None Remove="Images\nextMusic.png" />
-    <None Remove="Images\nextMusic.svg" />
-    <None Remove="Images\pause.png" />
-    <None Remove="Images\pause.svg" />
-    <None Remove="Images\play.png" />
-    <None Remove="Images\play.svg" />
-    <None Remove="Images\prevMusic.png" />
-    <None Remove="Images\prevMusic.svg" />
-    <None Remove="Images\upload.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Images\back.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Images\backArrow.png" />
-    <EmbeddedResource Include="Images\folders.svg" />
-    <EmbeddedResource Include="Images\headphones.png" />
-    <EmbeddedResource Include="Images\headphones.svg" />
-    <EmbeddedResource Include="Images\info.png" />
-    <EmbeddedResource Include="Images\info.svg" />
-    <EmbeddedResource Include="Images\nextMusic.png" />
-    <EmbeddedResource Include="Images\nextMusic.svg" />
-    <EmbeddedResource Include="Images\pause.png" />
-    <EmbeddedResource Include="Images\pause.svg" />
-    <EmbeddedResource Include="Images\play.png" />
-    <EmbeddedResource Include="Images\play.svg" />
-    <EmbeddedResource Include="Images\prevMusic.png" />
-    <EmbeddedResource Include="Images\prevMusic.svg" />
-    <EmbeddedResource Include="Images\upload.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Plugin.MediaManager.Forms" Version="0.9.5" />
+    <PackageReference Include="Plugin.MediaManager.Forms" Version="0.9.0" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,9 +32,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\PlaylistsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\WelcomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
